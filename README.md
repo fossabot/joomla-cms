@@ -1,2 +1,2 @@
-CSS only lightbox field for Joomla custom fields
+attachments field for Joomla custom fields
 
