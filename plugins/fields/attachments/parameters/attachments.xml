@@ -2,7 +2,26 @@
 <form>
 	<fields name="fieldparams" label="JLIB_FORM_FIELD_PARAM_BASIC_LABEL">
 		<fieldset name="fieldparams">
+			<field
+				name="directory"
+				type="text"
+				default=""
+				class="input-xxlarge"
+				label="PLG_FIELDS_ATTACHMENTS_DIRECTORY_LABEL"
+				description="PLG_FIELDS_ATTACHMENTS_DIRECTORY_DESC"
+			/>
 
+			<field
+				name="home"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="0"
+				label="PLG_FIELDS_ATTACHMENTS_DIRECTORY_HOME_LABEL"
+				description="PLG_FIELDS_ATTACHMENTS_DIRECTORY_HOME_DESC"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
 		</fieldset>
 	</fields>
 </form>
