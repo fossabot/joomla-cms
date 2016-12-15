@@ -10,15 +10,6 @@
 				description="PLG_FIELDS_LIGHTBOX_THUMBNAIL_WIDTH_DESC"
 				size="5"
 			/>
-
-			<field
-				name="lightboximage"
-				type="media"
-				directory="images"
-				class="input-xxlarge"
-				label="PLG_FIELDS_LIGHTBOX_IMAGE_LABEL"
-				description="PLG_FIELDS_LIGHTBOX_IMAGE_DESC"
-			/>
 		</fieldset>
 	</fields>
 </form>

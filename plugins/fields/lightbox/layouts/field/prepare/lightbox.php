@@ -15,9 +15,9 @@ if (!key_exists('field', $displayData))
 }
 
 $field = $displayData['field'];
-$value = $field->value;
+$lightboximage = $field->value;
 
-if (!$value)
+if (!$lightboximage)
 {
 	return;
 }
@@ -29,13 +29,6 @@ $doc = JFactory::getDocument();
 
 // Adding the CSS for the lightbox
 JHtml::_('stylesheet', 'plg_fields_lightbox/lightbox.css', array('version' => 'auto', 'relative' => true));
-
-// Youtube Video container
-//$buffer  = '<div class="embed-container"><iframe src="//www.youtube.com/embed/';
-//$buffer .= $youtube_id;
-//$buffer .= '" frameborder="0" allowfullscreen></iframe></div';
-//
-//echo $buffer;
 
 $buffer  = '<div class="lightboxdiv"><a href="#img1"><img src="';
 $buffer .= $lightboximage;
