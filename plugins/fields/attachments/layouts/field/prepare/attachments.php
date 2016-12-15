@@ -15,25 +15,25 @@ if (!key_exists('field', $displayData))
 }
 
 $field = $displayData['field'];
-$lightboximage = $field->value;
+$attachmentsimage = $field->value;
 
-if (!$lightboximage)
+if (!$attachmentsimage)
 {
 	return;
 }
 
 // Loading the language
-JFactory::getLanguage()->load('plg_fields_lightbox', JPATH_ADMINISTRATOR);
+JFactory::getLanguage()->load('plg_fields_attachments', JPATH_ADMINISTRATOR);
 
 $doc = JFactory::getDocument();
 
-// Adding the CSS for the lightbox
-JHtml::_('stylesheet', 'plg_fields_lightbox/lightbox.css', array('version' => 'auto', 'relative' => true));
+// Adding the CSS for the attachments
+JHtml::_('stylesheet', 'plg_fields_attachments/attachments.css', array('version' => 'auto', 'relative' => true));
 
-$buffer  = '<div class="lightboxdiv"><a href="#img1"><img src="';
-$buffer .= $lightboximage;
-$buffer .= '" class="thumbnail"></a><a href="#_" class="lightbox" id="img1"><img src="';
-$buffer .= $lightboximage;
+$buffer  = '<div class="attachmentsdiv"><a href="#img1"><img src="';
+$buffer .= $attachmentsimage;
+$buffer .= '" class="thumbnail"></a><a href="#_" class="attachments" id="img1"><img src="';
+$buffer .= $attachmentsimage;
 $buffer .= '"></a></div>';
 
 echo $buffer;
