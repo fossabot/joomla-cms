@@ -396,6 +396,8 @@ class JoomlaInstallerScript
 			array('plugin', 'contact', 'editors-xtd', 0),
 			array('plugin', 'fields', 'system', 0),
 			array('plugin', 'gallery', 'fields', 0),
+			array('plugin', 'youtube', 'fields', 0),
+
 
 			// Templates
 			array('template', 'beez3', '', 0),
