@@ -68,7 +68,7 @@ class PlgSampledataBlog extends JPlugin
 		$data->title       = JText::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_TITLE');
 		$data->description = JText::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_DESC');
 		$data->icon        = 'broadcast';
-		$data->steps       = 3;
+		$data->steps       = 4;
 
 		return $data;
 	}
@@ -954,6 +954,23 @@ class PlgSampledataBlog extends JPlugin
 		$response['message'] = JText::_('PLG_SAMPLEDATA_BLOG_STEP3_SUCCESS');
 
 		return $response;
+	}
+
+	/**
+	 * Final step to show completion of  sampledata.
+	 *
+	 * @return  array or void  Will be converted into the JSON response to the module.
+	 *
+	 * @since __DEPLOY_VERSION__
+	 */
+
+	public function onAjaxSampledataApplyStep4()
+	{
+		$response['success'] = true;
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP4_SUCCESS');
+
+		return $response;
+
 	}
 
 	/**
