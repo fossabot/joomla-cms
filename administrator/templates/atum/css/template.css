@@ -1503,6 +1503,7 @@ iframe {
   margin-bottom: 2rem; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .com-cpanel-help .list-group-item, .com-cpanel-system .list-group-item {
   padding: 0; }
   .com-cpanel-help .list-group-item a, .com-cpanel-system .list-group-item a {
@@ -1510,6 +1511,9 @@ iframe {
     padding: 0.75rem 1.25rem; }
 =======
 .com_config .field_spacer > .control-label {
+=======
+.com_config .field-spacer > .control-label {
+>>>>>>> fix silly mistake - thanks @ggppdk
   width: auto; }
 >>>>>>> [4.0] Spacer
 

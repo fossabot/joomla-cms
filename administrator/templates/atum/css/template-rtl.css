@@ -1502,12 +1502,16 @@ iframe {
 .com_config [class^='col-'] > fieldset {
   margin-bottom: 2rem; }
 
+<<<<<<< HEAD
 .com-cpanel-help .list-group-item, .com-cpanel-system .list-group-item {
   padding: 0; }
   .com-cpanel-help .list-group-item a, .com-cpanel-system .list-group-item a {
     display: block;
     padding: 0.75rem 1.25rem; }
 .com_config .field_spacer > .control-label {
+=======
+.com_config .field-spacer > .control-label {
+>>>>>>> fix silly mistake - thanks @ggppdk
   width: auto; }
 
 .com-cpanel-help__header {
