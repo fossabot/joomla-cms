@@ -78,3 +78,8 @@ else
 	id="<?php echo $id; ?>"
 	value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
 	<?php echo implode(' ', $attributes); ?>>
+<?php if (!empty($description)) : ?>
+	<div role="tooltip" id="<?php echo $name . '-desc'; ?>">
+		<?php echo htmlspecialchars($description); ?>
+	</div>
+<?php endif; ?>
