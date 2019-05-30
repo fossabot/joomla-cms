@@ -52,10 +52,6 @@
   max-width: $input-max-width; 
 }
 
-.bg-none {
-  background:none;
-}
-
 .spacer {
   hr {
     width: 380px;
@@ -132,4 +128,13 @@ legend {
   display: block;
   position: absolute;
   bottom: 100%;
+}
+
+/* color field */
+.color {
+  background: $gray-200;
+}
+
+input[type="color"] {
+  float: right
 }

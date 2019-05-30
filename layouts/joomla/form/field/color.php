@@ -49,11 +49,12 @@ extract($displayData, null);
  * @var   array    $colors          The specified colors
  */
 
-$class    = ' class="custom-select bg-none' . trim($class) . '"';
+$class    = ' class="custom-select color' . trim($class) . '"';
 $disabled = $disabled ? ' disabled' : '';
 $readonly = $readonly ? ' readonly' : '';
 ?>
 <span <?php echo $class ?>>
+<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>
 	<input
 		type="color"
 		name="<?php echo $name; ?>"
@@ -61,5 +62,4 @@ $readonly = $readonly ? ' readonly' : '';
 		<?php echo $disabled; ?>
 		<?php echo $readonly; ?>	
 		value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>">
-	<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>
 </span>
