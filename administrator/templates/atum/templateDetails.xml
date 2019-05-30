@@ -59,6 +59,7 @@
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
 				</field>
+
 				<field
 					name="loginLogo"
 					type="media"

@@ -182,6 +182,43 @@ abstract class JHtmlBehavior
 	}
 
 	/**
+	 * Add unobtrusive JavaScript support for a calendar control.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.5
+	 *
+	 * @deprecated 4.0
+	 */
+	public static function calendar()
+	{
+		// Only load once
+		if (isset(static::$loaded[__METHOD__]))
+		{
+			return;
+		}
+
+		Log::add('JHtmlBehavior::calendar is deprecated as the static assets are being loaded in the relative layout.', Log::WARNING, 'deprecated');
+
+		$document = Factory::getDocument();
+		$tag      = Factory::getLanguage()->getTag();
+		$attribs  = array('title' => Text::_('JLIB_HTML_BEHAVIOR_GREEN'), 'media' => 'all');
+
+		HTMLHelper::_('stylesheet', 'system/calendar-jos.css', array('version' => 'auto', 'relative' => true), $attribs);
+		HTMLHelper::_('script', $tag . '/calendar.js', array('version' => 'auto', 'relative' => true));
+		HTMLHelper::_('script', $tag . '/calendar-setup.js', array('version' => 'auto', 'relative' => true));
+
+		$translation = static::calendartranslation();
+
+		if ($translation)
+		{
+			$document->addScriptDeclaration($translation);
+		}
+
+		static::$loaded[__METHOD__] = true;
+	}
+
+	/**
 	 * Keep session alive, for example, while editing or creating an article.
 	 *
 	 * @return  void
