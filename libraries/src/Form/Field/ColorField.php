@@ -184,11 +184,12 @@ class ColorField extends FormField
 	 */
 	protected function getInput()
 	{
-		// Switch the layouts
-		$this->layout = $this->control === 'simple' ? $this->layout . '.simple' : $this->layout . '.advanced';
+	if (empty($this->layout))
+		{
+			throw new \UnexpectedValueException(sprintf('%s has no layout assigned.', $this->name));
+		}
 
-		// Trim the trailing line in the layout file
-		return rtrim($this->getRenderer($this->layout)->render($this->getLayoutData()), PHP_EOL);
+		return $this->getRenderer($this->layout)->render($this->getLayoutData());
 	}
 
 	/**
@@ -205,9 +206,6 @@ class ColorField extends FormField
 		$color = strtolower($this->value);
 		$color = ! $color ? '' : $color;
 
-		// Position of the panel can be: right (default), left, top or bottom (default RTL is left)
-		$position = ' data-position="' . (($lang->isRTL() && $this->position == 'default') ? 'left' : $this->position) . '"';
-
 		if (!$color || in_array($color, array('none', 'transparent')))
 		{
 			$color = 'none';
@@ -217,18 +215,13 @@ class ColorField extends FormField
 			$color = '#' . $color;
 		}
 
-		// Assign data for simple/advanced mode
-		$controlModeData = $this->control === 'simple' ? $this->getSimpleModeLayoutData() : $this->getAdvancedModeLayoutData($lang);
-
 		$extraData = array(
 			'color'    => $color,
 			'format'   => $this->format,
 			'keywords' => $this->keywords,
-			'position' => $position,
 			'validate' => $this->validate
 		);
-
-		return array_merge($data, $extraData, $controlModeData);
+		return array_merge($data, $extraData);
 	}
 
 	/**

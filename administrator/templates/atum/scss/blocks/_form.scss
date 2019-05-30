@@ -49,7 +49,11 @@
 }
 
 .custom-select {
-  max-width: $input-max-width;
+  max-width: $input-max-width; 
+}
+
+.bg-none {
+  background:none;
 }
 
 .spacer {
