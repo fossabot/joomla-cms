@@ -59,19 +59,11 @@
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
 				</field>
-
 				<field
 					name="loginLogo"
 					type="media"
 					label="TPL_ATUM_LOGIN_LOGO_LABEL"
 				 />
-				<field
-					name="color"
-					type="color"
-					label="COLOR"
-					default="#a4c2eb"
-					filter="color"
-				/>
 			</fieldset>
 		</fields>
 	</config>
