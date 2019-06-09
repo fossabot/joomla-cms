@@ -32,24 +32,6 @@ abstract class JHtmlBehavior
 	protected static $loaded = array();
 
 	/**
-	 * Method to load the MooTools framework into the document head
-	 *
-	 * If debugging mode is on an uncompressed version of MooTools is included for easier debugging.
-	 *
-	 * @param   boolean  $extras  Flag to determine whether to load MooTools More in addition to Core
-	 * @param   mixed    $debug   Is debugging mode on? [optional]
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	 * @deprecated 4.0 Update scripts to jquery
-	 */
-	public static function framework($extras = false, $debug = null)
-	{
-		// Files removed!!
-	}
-
-	/**
 	 * Method to load core.js into the document head.
 	 *
 	 * Core.js defines the 'Joomla' namespace and contains functions which are used across extensions
@@ -63,34 +45,6 @@ abstract class JHtmlBehavior
 	public static function core()
 	{
 		Factory::getApplication()->getDocument()->getWebAssetManager()->enableAsset('core');
-	}
-
-	/**
-	 * Add unobtrusive JavaScript support for form validation.
-	 *
-	 * To enable form validation the form tag must have class="form-validate".
-	 * Each field that needs to be validated needs to have class="validate".
-	 * Additional handlers can be added to the handler for username, password,
-	 * numeric and email. To use these add class="validate-email" and so on.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.5
-	 *
-	 * @Deprecated 3.4 Use formvalidator instead
-	 */
-	public static function formvalidation()
-	{
-		Log::add('The use of formvalidation is deprecated use formvalidator instead.', Log::WARNING, 'deprecated');
-
-		// Only load once
-		if (isset(static::$loaded[__METHOD__]))
-		{
-			return;
-		}
-
-		// Load the new jQuery code
-		static::formvalidator();
 	}
 
 	/**
@@ -186,33 +140,6 @@ abstract class JHtmlBehavior
 	}
 
 	/**
-	 * Add unobtrusive JavaScript support for modal links.
-	 *
-	 * @param   string  $selector  The selector for which a modal behaviour is to be applied.
-	 * @param   array   $params    An array of parameters for the modal behaviour.
-	 *                             Options for the modal behaviour can be:
-	 *                            - ajaxOptions
-	 *                            - size
-	 *                            - shadow
-	 *                            - overlay
-	 *                            - onOpen
-	 *                            - onClose
-	 *                            - onUpdate
-	 *                            - onResize
-	 *                            - onShow
-	 *                            - onHide
-	 *
-	 * @return  void
-	 *
-	 * @since   1.5
-	 * @deprecated 4.0  Use the modal equivalent from bootstrap
-	 */
-	public static function modal($selector = 'a.modal', $params = array())
-	{
-		// Files removed!!
-	}
-
-	/**
 	 * JavaScript behavior to allow shift select in grids
 	 *
 	 * @param   string  $id  The id of the form for which a multiselect behaviour is to be applied.
@@ -252,43 +179,6 @@ abstract class JHtmlBehavior
 	public static function tree($id, $params = array(), $root = array())
 	{
 		// Files removed!!
-	}
-
-	/**
-	 * Add unobtrusive JavaScript support for a calendar control.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.5
-	 *
-	 * @deprecated 4.0
-	 */
-	public static function calendar()
-	{
-		// Only load once
-		if (isset(static::$loaded[__METHOD__]))
-		{
-			return;
-		}
-
-		Log::add('JHtmlBehavior::calendar is deprecated as the static assets are being loaded in the relative layout.', Log::WARNING, 'deprecated');
-
-		$document = Factory::getDocument();
-		$tag      = Factory::getLanguage()->getTag();
-		$attribs  = array('title' => Text::_('JLIB_HTML_BEHAVIOR_GREEN'), 'media' => 'all');
-
-		HTMLHelper::_('stylesheet', 'system/calendar-jos.css', array('version' => 'auto', 'relative' => true), $attribs);
-		HTMLHelper::_('script', $tag . '/calendar.js', array('version' => 'auto', 'relative' => true));
-		HTMLHelper::_('script', $tag . '/calendar-setup.js', array('version' => 'auto', 'relative' => true));
-
-		$translation = static::calendartranslation();
-
-		if ($translation)
-		{
-			$document->addScriptDeclaration($translation);
-		}
-
-		static::$loaded[__METHOD__] = true;
 	}
 
 	/**
@@ -377,69 +267,6 @@ abstract class JHtmlBehavior
 		static::$loaded[__METHOD__][$sig] = true;
 
 		return;
-	}
-
-	/**
-	 * Break us out of any containing iframes
-	 *
-	 * @return  void
-	 *
-	 * @since   1.5
-	 *
-	 * @deprecated  4.0  Add a X-Frame-Options HTTP Header with the SAMEORIGIN value instead.
-	 */
-	public static function noframes()
-	{
-		Log::add(__METHOD__ . ' is deprecated, add a X-Frame-Options HTTP Header with the SAMEORIGIN value instead.', Log::WARNING, 'deprecated');
-
-		// Only load once
-		if (isset(static::$loaded[__METHOD__]))
-		{
-			return;
-		}
-
-		// Include core
-		static::core();
-
-		// Include jQuery
-		HTMLHelper::_('jquery.framework');
-
-		$js = 'jQuery(function () {
-			if (top == self) {
-				document.documentElement.style.display = "block";
-			}
-			else
-			{
-				top.location = self.location;
-			}
-
-			// Firefox fix
-			jQuery("input[autofocus]").focus();
-		})';
-		$document = Factory::getDocument();
-		$document->addStyleDeclaration('html { display:none }');
-		$document->addScriptDeclaration($js);
-
-		Factory::getApplication()->setHeader('X-Frame-Options', 'SAMEORIGIN');
-
-		static::$loaded[__METHOD__] = true;
-	}
-
-	/**
-	 * Internal method to get a JavaScript object notation string from an array
-	 *
-	 * @param   array  $array  The array to convert to JavaScript object notation
-	 *
-	 * @return  string  JavaScript object notation representation of the array
-	 *
-	 * @since       1.5
-	 * @deprecated  4.0 - Use HTMLHelper::getJSObject() instead.
-	 */
-	protected static function _getJSObject($array = array())
-	{
-		Log::add('JHtmlBehavior::_getJSObject() is deprecated. HTMLHelper::getJSObject() instead..', Log::WARNING, 'deprecated');
-
-		return HTMLHelper::getJSObject($array);
 	}
 
 	/**
