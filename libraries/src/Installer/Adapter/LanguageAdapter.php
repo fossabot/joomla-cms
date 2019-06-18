@@ -560,7 +560,6 @@ class LanguageAdapter extends InstallerAdapter
 				'ordering'     => 0,
 				'access'       => (int) Factory::getApplication()->get('access', 1),
 				'description'  => '',
-				'metakey'      => '',
 				'metadesc'     => '',
 				'sitename'     => '',
 			);
